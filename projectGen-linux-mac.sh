@@ -63,5 +63,28 @@ poetry install
 echo "-----------------------------"
 print_color "${GREEN}" "Installation Complete"
 
-# Activate Poetry shell
-poetry shell
+# Prompt the user for an app name
+read -p "Enter App Name: " app_name
+
+print_color "${YELLOW}" "Creating App"
+echo "-----------------------------"
+django-admin startapp "$app_name"_app
+echo "-----------------------------"
+print_color "${GREEN}" "App Creation Complete"
+
+# Setting Folders
+print_color "${YELLOW}" "Setting App"
+cd "$app_name"_app
+
+mkdir templates
+
+cd templates
+
+mkdir "$app_name"_app
+
+print_color "${GREEN}" "Setting Complete"
+
+print_color "${GREEN}" "Project '$folder_name' is Successfully Created."
+
+print_color "${GREEN}" "To run the project, use:"
+print_color "${GREEN}" "poetry shell -- to open the poetry shell and run commands there."
